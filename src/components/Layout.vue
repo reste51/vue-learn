@@ -290,8 +290,6 @@ body {
 .button:hover {
   background: #4fc08d;
 }
-.g-form {
-}
 .g-form-line {
   padding: 15px 0;
 }
