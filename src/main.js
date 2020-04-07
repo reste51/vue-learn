@@ -1,8 +1,24 @@
 import Vue from 'vue'
-import App from './App.vue'
+import Layout from './components/Layout'
+import IndexPage from './pages/IndexPage'
+import VueRouter from 'vue-router'
+
+
+Vue.use(VueRouter)
+// 声明一个 router 实例
+let router = new VueRouter({
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      component: IndexPage
+    }
+  ]
+})
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  render: h => h(Layout),
+  router
+}).$mount('#layout')
