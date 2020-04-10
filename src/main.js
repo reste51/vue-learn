@@ -19,6 +19,9 @@ let router = new VueRouter({
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(Layout),
-  router
+  router,
+  components: {
+    Layout
+  },
+  render: h => h(Layout)
 }).$mount('#layout')
