@@ -61,12 +61,14 @@ export default {
     // slideShow
   },
   created: function () {
+    /*
     this.$http.get('api/getNewsList')
       .then((res) => {
         this.newsList = res.data
       }, (err) => {
         console.log(err)
       })
+      */
   },
   data () {
     return {
