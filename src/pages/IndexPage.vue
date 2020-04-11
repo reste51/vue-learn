@@ -18,6 +18,7 @@
           <div v-if="!product.last"
                class="hr"></div>
         </div>
+        <!-- 最新消息 -->
         <div class="index-left-block lastest-news">
           <h2>最新消息</h2>
           <ul>
@@ -29,28 +30,34 @@
           </ul>
         </div>
       </div>
-      <div class="index-right">
-        <!-- 
-        <slide-show :slides="slides"
-                    :inv="invTime"></slide-show>
-        -->
-        <div class="index-board-list">
-          <div class="index-board-item"
-               v-for="(item, index) in boardList"
-               :key="index"
-               :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id]">
-            <div class="index-board-item-inner">
-              <h2>{{ item.title }}</h2>
-              <p>{{ item.description }}</p>
-              <div class="index-board-button">
-                <router-link class="button"
-                             :to="{path: 'detail/' + item.toKey}">立即购买</router-link>
-              </div>
+    </div>
+
+    <!-- 右侧块 -->
+    <div class="index-right">
+      <!-- 
+      <slide-show :slides="slides"
+                  :inv="invTime"></slide-show>
+      -->
+      <!-- 图片块的列表, 建议使用 element-ui的 :span 布局 -->
+      <div class="index-board-list">
+
+        <div class="index-board-item"
+             v-for="(item, index) in boardList"
+             :key="index"
+             :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id,{'hello':index===1}]">
+          <div class="index-board-item-inner">
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.description }}</p>
+            <div class="index-board-button">
+              <router-link class="button"
+                           :to="{path: 'detail/' + item.toKey}">立即购买</router-link>
             </div>
           </div>
         </div>
       </div>
+
     </div>
+
   </div>
 </template>
 
@@ -125,7 +132,11 @@ export default {
           saleout: false
         }
       ],
-      newsList: [],
+      newsList: [
+        { title: ' 数据统计', url: 'http://www.baidu.com' },
+        { title: ' 分析小小', url: 'http://www.dota.com' },
+        { title: ' 游戏测试', url: 'http://www.xinlang.com' }
+      ],
       productList: {
         pc: {
           title: 'PC产品',
@@ -220,6 +231,7 @@ export default {
 }
 .index-board-list {
   overflow: hidden;
+  padding-top: 16px;
 }
 .index-board-item {
   float: left;
@@ -268,8 +280,11 @@ export default {
 .new-item {
   display: inline-block;
   width: 230px;
+  /***超出隐藏 */
   overflow: hidden;
+  /***超出省略 */
   text-overflow: ellipsis;
+  /***超出换行 */
   white-space: nowrap;
 }
 </style>
