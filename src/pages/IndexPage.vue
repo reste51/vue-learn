@@ -35,7 +35,8 @@
     <!-- 右侧块 -->
     <div class="index-right">
       <!-- 切换图片 -->
-      <slide-show :slides="slides"></slide-show>
+      <slide-show :slides="slides"
+                  :intervalTime="2000"></slide-show>
 
       <!-- 图片块的列表, 建议使用 element-ui的 :span 布局 -->
       <div class="index-board-list">
