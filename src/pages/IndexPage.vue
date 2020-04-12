@@ -4,22 +4,28 @@
       <div class="index-left-block">
         <h2>全部产品</h2>
 
-        <div v-for="(product, index) in productList" :key="index">
+        <div v-for="(product, index) in productList"
+             :key="index">
           <h3>{{ product.title }}</h3>
           <ul>
-            <li v-for="(item, index) in product.list" :key="index">
+            <li v-for="(item, index) in product.list"
+                :key="index">
               <a :href="item.url">{{ item.name }}</a>
-              <span v-if="item.hot" class="hot-tag">HOT</span>
+              <span v-if="item.hot"
+                    class="hot-tag">HOT</span>
             </li>
           </ul>
-          <div v-if="!product.last" class="hr"></div>
+          <div v-if="!product.last"
+               class="hr"></div>
         </div>
         <!-- 最新消息 -->
         <div class="index-left-block lastest-news">
           <h2>最新消息</h2>
           <ul>
-            <li v-for="(item, index) in newsList" :key="index">
-              <a :href="item.url" class="new-item">{{ item.title }}</a>
+            <li v-for="(item, index) in newsList"
+                :key="index">
+              <a :href="item.url"
+                 class="new-item">{{ item.title }}</a>
             </li>
           </ul>
         </div>
@@ -29,27 +35,24 @@
     <!-- 右侧块 -->
     <div class="index-right">
       <!-- 切换图片 -->
-      <slide-show></slide-show>
+      <slide-show :slides="slides"></slide-show>
 
       <!-- 图片块的列表, 建议使用 element-ui的 :span 布局 -->
       <div class="index-board-list">
-        <div
-          class="index-board-item"
-          v-for="(item, index) in boardList"
-          :key="index"
-          :class="[
+        <div class="index-board-item"
+             v-for="(item, index) in boardList"
+             :key="index"
+             :class="[
             { 'line-last': index % 2 !== 0 },
             'index-board-' + item.id,
             { hello: index === 1 }
-          ]"
-        >
+          ]">
           <div class="index-board-item-inner">
             <h2>{{ item.title }}</h2>
             <p>{{ item.description }}</p>
             <div class="index-board-button">
-              <router-link class="button" :to="{ path: 'detail/' + item.toKey }"
-                >立即购买</router-link
-              >
+              <router-link class="button"
+                           :to="{ path: 'detail/' + item.toKey }">立即购买</router-link>
             </div>
           </div>
         </div>
@@ -64,7 +67,7 @@ export default {
   components: {
     SlideShow
   },
-  created: function() {
+  created: function () {
     /*
     this.$http.get('api/getNewsList')
       .then((res) => {
@@ -74,11 +77,12 @@ export default {
       })
       */
   },
-  data() {
+  data () {
     return {
       invTime: 2000,
       slides: [
         {
+          // 使用 require 来指定是一个 图片的组件, 而不能传递一个字符串.
           src: require('../assets/slideShow/pic1.jpg'),
           title: 'xxx1',
           href: 'detail/analysis'
@@ -244,7 +248,7 @@ export default {
   padding-left: 120px;
 }
 .index-board-car .index-board-item-inner {
-  background: url('../assets/images/1.png') no-repeat;
+  background: url("../assets/images/1.png") no-repeat;
 }
 .index-board-loud .index-board-item-inner {
   background: url(../assets/images/2.png) no-repeat;

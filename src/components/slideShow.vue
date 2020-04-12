@@ -1,9 +1,48 @@
 <template>
-  <div>Slide Show</div>
+  <div class="slide-show">
+    <div class="slide-img">
+      <a :href="slides[currentIndex].href"> <img :src="slides[currentIndex].src"></a>
+    </div>
+    <h2>{{slides[currentIndex].title}}</h2>
+    <ul class="slide-pages">
+      <li @click="changeIndex(currentIndex-1)">&lt;</li>
+      <li v-for="(item,index) of slides"
+          :key="index">
+        <a @click="changeIndex(index+1)">{{index + 1}}</a>
+      </li>
+      <li @click="changeIndex(currentIndex+1)">&gt;</li>
+    </ul>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      currentIndex: 1
+    }
+  },
+  props: {
+    slides: {
+      default: () => [],
+      type: Array
+    }
+  },
+  mounted () {
+    console.log(this.slides)
+  },
+  methods: {
+    // 切换 当前索引值
+    changeIndex (newIndex) {
+      console.log('new index --> ' + newIndex)
+      //边界处理
+      if (newIndex < 0) newIndex = 0
+      if (newIndex > this.slides.length - 1) newIndex = this.slides.length - 1
+
+      this.currentIndex = newIndex
+    }
+  }
+}
 </script>
 
 <style scoped>
