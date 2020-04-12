@@ -12,6 +12,15 @@ let router = new VueRouter({
     {
       path: '/',
       component: IndexPage
+    },
+    {
+      path: '/tsfx/index',
+      redirect: '/tsfx/index/tl',  // 默认跳转到 停留页面
+      component: () => import('./components/tsfx/index'),
+      children: [{
+        path: '/tsfx/index/:type',
+        component: () => import('./components/tsfx/components/common')
+      }]
     }
   ]
 })
