@@ -1,2 +1,4 @@
 node_modules
 package-lock.json
+src/components/eventBus/com1.vue
+src/components/eventBus/com2.vue
