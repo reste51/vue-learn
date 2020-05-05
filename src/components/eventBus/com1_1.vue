@@ -11,6 +11,10 @@ export default {
     // 发布一个事件
     fbEvent() {
       eventBus.$emit('comClick')
+
+      console.log(
+        `输出 新修改的 store值 ${this.$store.getters.getUser.name} : ${this.$store.getters.getUser.age}`
+      )
     }
   }
 }

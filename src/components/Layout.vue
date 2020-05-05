@@ -2,23 +2,18 @@
   <div id="layout">
     <div class="app-head">
       <div class="app-head-inner">
-        <router-link :to="{path: '/'}">
-          <img src="../assets/logo.png">
+        <router-link :to="{ path: '/' }">
+          <img src="../assets/logo.png" />
         </router-link>
         <div class="head-nav">
           <ul class="nav-list">
-            <li> {{ username }}</li>
-            <li v-if="username!== ''"
-                class="nav-pile">|</li>
-            <li v-if="username!== ''"
-                @click="quit">退出</li>
-            <li v-if="username=== ''"
-                @click="logClick">登录</li>
+            <li>{{ username }}</li>
+            <li v-if="username !== ''" class="nav-pile">|</li>
+            <li v-if="username !== ''" @click="quit">退出</li>
+            <li v-if="username === ''" @click="logClick">登录</li>
             <li class="nav-pile">|</li>
-            <li v-if="username=== ''"
-                @click="regClick">注册</li>
-            <li v-if="username=== ''"
-                class="nav-pile">|</li>
+            <li v-if="username === ''" @click="regClick">注册</li>
+            <li v-if="username === ''" class="nav-pile">|</li>
             <li @click="aboutClick">关于</li>
           </ul>
         </div>
@@ -61,7 +56,7 @@ export default {
     // LogForm,
     // RegForm
   },
-  data () {
+  data() {
     return {
       isShowAboutDialog: false,
       isShowLogDialog: false,
@@ -70,19 +65,19 @@ export default {
     }
   },
   methods: {
-    aboutClick () {
+    aboutClick() {
       this.isShowAboutDialog = true
     },
-    logClick () {
+    logClick() {
       this.isShowLogDialog = true
     },
-    regClick () {
+    regClick() {
       this.isShowRegDialog = true
     },
-    closeDialog (attr) {
+    closeDialog(attr) {
       this[attr] = false
     },
-    onSuccessLog (data) {
+    onSuccessLog(data) {
       console.log(data)
       this.closeDialog('isShowLogDialog')
       this.username = data.username
@@ -214,7 +209,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
@@ -227,9 +222,9 @@ a {
 }
 body {
   background: #f0f2f5;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB",
-    "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei",
-    "WenQuanYi Micro Hei", sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB',
+    'Hiragino Sans GB W3', 'Microsoft YaHei UI', 'Microsoft YaHei',
+    'WenQuanYi Micro Hei', sans-serif;
   font-size: 14px;
   color: #444;
 }

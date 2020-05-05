@@ -3,6 +3,9 @@ import Layout from './components/Layout'
 import IndexPage from './pages/IndexPage'
 import VueRouter from 'vue-router'
 
+// 注: store是个文件夹, 默认会加载 index.js文件
+import store from './store'
+
 Vue.use(VueRouter)
 // 声明一个 router 实例
 let router = new VueRouter({
@@ -37,5 +40,6 @@ new Vue({
   components: {
     Layout
   },
+  store, // vuex
   render: h => h(Layout)
 }).$mount('#layout')
