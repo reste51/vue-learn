@@ -9,20 +9,27 @@
 <script>
 import como from './com1_1'
 import comt from './com2_2'
+
+import moment from 'moment'
+
 export default {
   components: {
     como,
     comt
   },
-  mounted() {
+  mounted () {
     // 输出 vuex 相关数据
     console.log(this.$store)
     // 通过 getters 来获取  store 的数据
     console.log(this.$store.getters.getParam)
     console.log(this.$store.getters.getUser)
+
+    // moment 使用
+    const kssj = moment().subtract(1, 'month').calendar();
+    console.log(kssj)
   },
   methods: {
-    updateStore() {
+    updateStore () {
       //同步修改, 通过 $store的commit函数调用mutations的相应方法,   函数名, 新值
       this.$store.commit('updateUser', { name: '路由图', age: 12 })
 
